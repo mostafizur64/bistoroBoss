@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -14,7 +13,7 @@ const Category = () => {
   return (
     <>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={1}
         spaceBetween={30}
         centeredSlides={true}
         pagination={{
@@ -22,26 +21,40 @@ const Category = () => {
         }}
         modules={[Pagination]}
         className="mySwiper mb-24 mt-16"
+        breakpoints={{
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 2,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 3,
+          },
+          // when window width is >= 1024px
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
       >
         <SwiperSlide>
-          <img src={slide1} alt="slide1" />
-          <h1 className="text-4xl uppercase  text-center -mt-20 shadow-md font-semibold text-white">Salads</h1>
+          <img className="md:w-full w-full" src={slide1} alt="slide1" />
+          <h1 className="text-4xl uppercase text-center -mt-20 shadow-md font-semibold text-white">Salads</h1>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide2} alt="slide1" />
-          <h1 className="text-4xl uppercase  text-center -mt-20 shadow-md font-semibold text-white">Pizzas</h1>
+          <img className="md:w-full w-full" src={slide2} alt="slide1" />
+          <h1 className="text-4xl uppercase text-center -mt-20 shadow-md font-semibold text-white">Pizzas</h1>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide3} alt="slide1" />
-          <h1 className="text-4xl uppercase  text-center -mt-20 shadow-md font-semibold text-white">Soups</h1>
+          <img className="md:w-full w-full" src={slide3} alt="slide1" />
+          <h1 className="text-4xl uppercase text-center -mt-20 shadow-md font-semibold text-white">Soups</h1>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide4} alt="slide1" />
-          <h1 className="text-4xl uppercase  text-center -mt-20 shadow-md font-semibold text-white">Desserts</h1>
+          <img className="md:w-full w-full" src={slide4} alt="slide1" />
+          <h1 className="text-4xl uppercase text-center -mt-20 shadow-md font-semibold text-white">Desserts</h1>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide5} alt="slide1" />
-          <h1 className="text-4xl uppercase  text-center -mt-20 shadow-md font-semibold text-white">Salads</h1>
+          <img className="md:w-full w-full" src={slide5} alt="slide1" />
+          <h1 className="text-4xl uppercase text-center -mt-20 shadow-md font-semibold text-white">Salads</h1>
         </SwiperSlide>
       </Swiper>
     </>

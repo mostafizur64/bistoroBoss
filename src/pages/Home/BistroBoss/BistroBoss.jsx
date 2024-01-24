@@ -14,7 +14,7 @@ const BistroBoss = () => {
   return (
     <div className="bistro-boss mb-24" style={backgroundImageStyle}>
       <div className="md:p-24 p-4">
-        <div className="text-center bg-white  md:p-24 p-4 ">
+        <div className="text-center bg-white  md:p-24 p-4 md:block hidden">
           <h1 className="text-4xl text-black font-medium uppercase leading-9 tracking-[5px]"> Bistro boss</h1>
           <p className="mt-8 ">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint sit
