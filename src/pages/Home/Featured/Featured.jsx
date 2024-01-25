@@ -6,11 +6,11 @@ const Featured = () => {
   return (
     <div className="featured-Img bg-fixed text-white pt-12 my-20">
       <Subtitle subTitle={"check it out"} heading={"Featured Item"} ></Subtitle>
-      <div className="md:flex justify-center items-center py-20 px-24 bg-slate-400 bg-opacity-50">
+      <div className="md:flex justify-center items-center md:py-20 md:px-24 bg-slate-400 bg-opacity-50">
         <div>
           <img src={featuredImg} alt="img" />
         </div>
-        <div className="md:ml-10 ">
+        <div className="md:ml-10 md:text-start text-center md:mt-0 mt-12">
           <p>Aug 20, 2029 </p>
           <p className="uppercase">Where can i get some?</p>
           <p>
