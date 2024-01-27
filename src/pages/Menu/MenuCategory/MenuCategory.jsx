@@ -2,6 +2,7 @@ import React from "react";
 import PopularItem from "../../Home/PopularItem/PopularItem";
 import MenuItem from "../../../Shared/MenuItem/MenuItem";
 import Cover from "../../../Shared/Cover/Cover";
+import { Link } from "react-router-dom";
 
 const MenuCategory = ({ items, title, img }) => {
   return (
@@ -14,9 +15,11 @@ const MenuCategory = ({ items, title, img }) => {
         ))}
       </div>
       <div className="flex items-center justify-center">
-        <button className="btn btn-outline border-0 border-b-4  mb-12 uppercase">
-        ORDER YOUR FAVOURITE FOOD
-        </button>
+        <Link to={`/order/${title}`}>
+          <button className="btn btn-outline border-0 border-b-4  mb-12 uppercase">
+            ORDER YOUR FAVOURITE FOOD
+          </button>
+        </Link>
       </div>
     </div>
   );
