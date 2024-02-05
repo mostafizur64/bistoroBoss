@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { toast } from "react-toastify";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -26,10 +27,22 @@ const SignUp = () => {
       console.log(loggedUser);
       updateUserProfile(data.name, data.photo_url)
         .then(() => {
-          console.log("user Profile info updated");
-          reset();
-          toast.success("User created successfully!");
-          navigate("/");
+          const savedData = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "post",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedData),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                toast.success("User created successfully!");
+                navigate("/");
+              }
+            });
         })
         .catch((error) => console.log(error));
     });
@@ -153,6 +166,7 @@ const SignUp = () => {
               <p>
                 New Here ?<Link to="/login">Create an account</Link>
               </p>
+              <SocialLogin/>
             </span>
           </div>
         </div>
