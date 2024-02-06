@@ -7,10 +7,12 @@ import {
   FaHardDrive,
 } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   // todo: load data from the server to have dynamic isAdmin based on Data
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="drawer lg:drawer-open ">

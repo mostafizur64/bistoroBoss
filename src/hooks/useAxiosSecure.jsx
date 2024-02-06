@@ -1,41 +1,26 @@
 import axios from "axios";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../Providers/AuthProvider";
-
-const axiosSecure = axios.create({ baseURL: "http://localhost:5000", });
+import useAuth from "./useAuth";
 
 const useAxiosSecure = () => {
+  const { logOut } = useAuth();
   const navigate = useNavigate();
-  const { logOut } = useContext(AuthContext);
+
+  const axiosSecure = axios.create({
+    baseURL: "http://localhost:5000",
+  });
 
   useEffect(() => {
-    axiosSecure.interceptors.request.use(
-      function (config) {
-        const token = localStorage.getItem("access_token");
-        config.headers.authorization = `Bearer ${token}`;
-        return config;
-      },
-      function (error) {
-        return Promise.reject(error);
+    const interceptor = axiosSecure.interceptors.request.use((config) => {
+      const token = localStorage.getItem("access_token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
       }
-    );
+      return config;
+    });
 
-    // intercepts 401 and 403 status ===========
-    //   axiosSecure.interceptors.response.use(
-    //      (response) => response,
-    //     async (error) => {
-    //       const status = error.response.status;
-    //       // console.log('status error in the interceptor', status);
-    //       // for 401 or 403 logout the user and move the user to the login
-    //       if (status === 401 || status === 403) {
-    //         await logOut()
-    //         navigate("/login");
-    //       }
-    //       return Promise.reject(error);
-    //     }
-    //   );
-    axiosSecure.interceptors.response.use(
+    const errorHandler = axiosSecure.interceptors.response.use(
       (response) => response,
       async (error) => {
         if (
@@ -48,7 +33,20 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
       }
     );
-  }, [logOut, navigate]);
-  return axiosSecure;
+
+    // Clean up interceptors when component unmounts
+    return () => {
+      axiosSecure.interceptors.request.eject(interceptor);
+      axiosSecure.interceptors.response.eject(errorHandler);
+    };
+  }, [
+    logOut,
+    navigate,
+    axiosSecure.interceptors.request,
+    axiosSecure.interceptors.response,
+  ]);
+
+  return [axiosSecure];
 };
+
 export default useAxiosSecure;
