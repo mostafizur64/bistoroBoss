@@ -4,6 +4,7 @@ import UseCart from "../../../hooks/UseCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [cart, refetch] = UseCart();
@@ -43,9 +44,11 @@ const MyCart = () => {
       <div className="uppercase flex items-center justify-between gap-4 mt-12 bg-[#D1A054] p-4 rounded-lg">
         <h2>Total Order : {cart.length}</h2>
         <h2>Total price : ${total}</h2>
-        <button className="btn btn-warning btn-sm uppercase text-black font-medium">
-          pay
-        </button>
+        <Link to="/dashboard/payment">
+          <button className="btn btn-warning btn-sm uppercase text-black font-medium">
+            pay
+          </button>
+        </Link>
       </div>
 
       {/* table section  */}
