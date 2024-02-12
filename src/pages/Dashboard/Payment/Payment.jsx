@@ -15,7 +15,6 @@ const Payment = () => {
   return (
     <div className="w-full">
       <Subtitle subTitle="Please process payment" heading="payment" />
-      teka o teke tumi urai uria aso
       <Elements stripe={stripePromise}>
         <CheckoutForm price={price} cart={cart} />
       </Elements>

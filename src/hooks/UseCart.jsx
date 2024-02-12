@@ -16,7 +16,7 @@ const UseCart = () => {
 
     // queryFn: async () => {
     //   const res = await fetch(
-    //     `http://localhost:5000/carts?email=${user.email},`,
+    //     `https://bbossserver-production.up.railway.app/carts?email=${user.email},`,
     //     {
     //       headers: {
     //         authorization: `bearer ${token}`,

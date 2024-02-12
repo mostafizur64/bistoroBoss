@@ -21,7 +21,7 @@ const FoodCard = ({ item }) => {
         image,
         email: user.email,
       };
-      fetch("http://localhost:5000/carts", {
+      fetch("https://bbossserver-production.up.railway.app/carts", {
         method: "post",
         headers: {
           "content-type": "application/json",
