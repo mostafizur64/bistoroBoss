@@ -22,7 +22,7 @@ const MyCart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, {
+        fetch(`https://bbossserver-production.up.railway.app/carts/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -42,8 +42,8 @@ const MyCart = () => {
       </Helmet>
       <h2 className="text-4xl font-medium">My Cart</h2>
       <div className="uppercase flex items-center justify-between gap-4 mt-12 bg-[#D1A054] p-4 rounded-lg">
-        <h2>Total Order : {cart.length}</h2>
-        <h2>Total price : ${total}</h2>
+        <h2 className="md:text-[18px] text-[12px]" >Total Order : {cart.length}</h2>
+        <h2 className="md:text-[18px] text-[12px]" >Total price : ${total}</h2>
         <Link to="/dashboard/payment">
           <button className="btn btn-warning btn-sm uppercase text-black font-medium">
             pay

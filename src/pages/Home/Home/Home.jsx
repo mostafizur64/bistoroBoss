@@ -17,7 +17,8 @@ const Home = () => {
         <title>Bistro Boss | Home</title>
       </Helmet>
 
-      <Banner />
+     <div className="md:px-0 px-2">
+     <Banner />
       <Category />
       <BistroBoss />
       <CallUs />
@@ -25,6 +26,7 @@ const Home = () => {
       <PopularItem />
       <Featured />
       <Testimonials />
+     </div>
     </div>
   );
 };

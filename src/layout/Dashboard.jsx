@@ -1,5 +1,12 @@
 import React from "react";
-import { FaBook, FaCalendar, FaShoppingCart, FaUser, FaUsers, FaUtensils } from "react-icons/fa";
+import {
+  FaBook,
+  FaCalendar,
+  FaShoppingCart,
+  FaUser,
+  FaUsers,
+  FaUtensils,
+} from "react-icons/fa";
 import {
   FaWallet,
   FaAlignJustify,
@@ -22,18 +29,18 @@ const Dashboard = () => {
         <Outlet />
         <label
           htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden block text-white"
+          className="btn btn-primary drawer-button lg:hidden flex text-white mt-12  items-center justify-center"
         >
           Open drawer
         </label>
       </div>
-      <div className="drawer-side bg-[#D1A054]">
+      <div className="drawer-side md:bg-[#D1A054]">
         <label
           htmlFor="my-drawer-2"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full  text-base-content">
+        <ul className="menu p-4 w-80 min-h-full  text-base-content bg-[#D1A054] shadow-2xl">
           {/* Sidebar content here */}
           {isAdmin ? (
             <>
@@ -64,7 +71,7 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/allusers">
                   <FaUsers />
-                 All Users
+                  All Users
                 </NavLink>
               </li>
             </>

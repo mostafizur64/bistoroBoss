@@ -39,29 +39,12 @@ const Navbar = () => {
           </button>
         </Link>
       </li>
-      {user ? (
-        <>
-          <li>
-            <Link to="#">{user?.displayName}</Link>
-          </li>
-
-          <button onClick={handleLogout} className="btn btn-ghost">
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </>
-      )}
     </div>
   );
 
   return (
     <>
-      <div className="navbar fixed z-10  bg-black bg-opacity-20 text-white max-w-screen-xl mx-auto">
+      <div className="navbar fixed z-10  bg-black bg-opacity-20 text-white md:max-w-screen-xl w-full mx-auto  ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -93,7 +76,23 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 ">{navOptions}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {user ? (
+            <>
+              <span className="md:flex hidden">
+                <Link to="#">{user?.displayName}</Link>
+              </span>
+
+              <button onClick={handleLogout} className="btn md:ml-4">
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="btn">
+                <Link to="/login">Login</Link>
+              </button>
+            </>
+          )}
         </div>
       </div>
     </>
